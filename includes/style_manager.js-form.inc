@@ -1371,13 +1371,13 @@ function _style_manager_jsform_advanced_numeric($variables) {
         $value_combo_options['global--' . $key] = array('global--' . $key, strip_tags(t('g:') . $var['title']), t('g:') . $var['title']);
       }
     }
-    $listeners = " function() {
+    $listeners = " function(el, old_val, new_val) {
                       var str_value = Ext.getCmp('{$id}--str_value');
                       var disabled = true;
                       if (str_value.value == 'value') {
                         disabled = false;
                       }
-                      if (Drupal.css_gen.advanced_numeric_store['{$id}--int_value']) {
+                      if (Drupal.css_gen.advanced_numeric_store['{$id}--int_value'] && new_val) {
                         Ext.getCmp('{$id}--int_value').setValue(Drupal.css_gen.advanced_numeric_store['{$id}--int_value']);
                       }
                       Ext.getCmp('{$id}--int_value').setDisabled(disabled);
@@ -1387,8 +1387,10 @@ function _style_manager_jsform_advanced_numeric($variables) {
                          Ext.getCmp('{$id}--int_value_unit').hide();
                          Ext.getCmp('{$id}--int_value_global_unit').show();
                          Ext.getCmp('{$id}--int_value').setDisabled(false);
-                         Drupal.css_gen.advanced_numeric_store['{$id}--int_value'] = Ext.getCmp('{$id}--int_value').getValue();
-                         Ext.getCmp('{$id}--int_value').setValue(0);
+                         if (new_val) {
+                           Drupal.css_gen.advanced_numeric_store['{$id}--int_value'] = Ext.getCmp('{$id}--int_value').getValue();
+                           Ext.getCmp('{$id}--int_value').setValue(0);
+                         }
                       }
                       else {
                          Ext.getCmp('{$id}--int_value_unit').show();
