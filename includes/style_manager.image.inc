@@ -39,8 +39,11 @@ function style_manager_images_import($preset, $images) {
             $item['settings']['image']['url'] = file_create_url($img_url);
             continue;
           }
-          elseif (!file_prepare_directory(file_build_uri('style_manager_images'), FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS)) {
-            continue;
+          else {
+            $file_uri = file_build_uri('style_manager_images');
+            if (!file_prepare_directory($file_uri, FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS)) {
+              continue;
+            }
           }
           file_unmanaged_save_data($img_data, $img_url, FILE_EXISTS_REPLACE);
           $item['settings']['image']['url'] = file_create_url($img_url);
