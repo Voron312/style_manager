@@ -1,0 +1,314 @@
+#branding {
+    display: none;
+}
+
+.x-window,
+.x-layer {
+    font-family: tahoma, arial, verdana, sans-serif !important;
+    line-height: normal;
+}
+
+.x-reset img {
+   vertical-align: top;
+}
+
+.x-window fieldset,
+.x-window fieldset legend,
+.x-window table,
+.x-window tbody,
+.x-window tr,
+.x-window th,
+.x-window td {
+    list-style: none !important;
+    height: auto !important;
+    position: static;
+    text-indent: 0;
+    background: none;
+    border: none;
+    font-weight: normal;
+    height: auto;
+}
+
+.x-window fieldset legend,
+.x-window table,
+.x-window tbody,
+.x-window tr,
+.x-window th,
+.x-window td {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.x-window fieldset {
+    background: none !important;
+}
+
+.x-window fieldset legend {
+    display: auto;
+    float: none;
+    width: auto;
+}
+
+.x-window label {
+    font-weight: normal;
+    display: inline !important;
+}
+
+.colorpicker {
+    z-index: 30000;
+}
+
+.x-boundlist-item {
+    overflow: hidden;
+}
+
+.x-layer ul,
+.x-boundlist ul {
+    margin: 0;
+    padding: 0;
+}
+
+#style_settings_btn {
+    background: #F4F4F4 url(../img/settings_icon.gif) repeat-y -4px -1px;
+    border: 1px solid #BEBEBE;
+    border-right: none;
+    display: block !important;
+    font: 13px/17px Helvetica, Arial, sans-serif;
+    height: 30px;
+    right: 0px;
+    position: fixed;
+    top: 45%;
+    width: 10px;
+    z-index: 30000;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    -webkit-box-shadow: -1px 2px 8px #999;
+    -moz-box-shadow: -1px 2px 8px #999;
+    box-shadow: -1px 2px 8px #999;
+}
+
+.style_manager_tabpanel .jsform_fieldset,
+.style_manager_tabpanel .x-panel-default-framed {
+    border: none;
+}
+
+.x-reset .x-panel-default-framed {
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    -o-border-radius: 0 !important;
+    -ms-border-radius: 0 !important;
+    -khtml-border-radius: 0 !important;
+    border-radius: 0 !important;;
+}
+
+.style_manager_main_tabpanel .x-panel-default-framed {
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    -o-border-radius: 0 !important;
+    -ms-border-radius: 0 !important;
+    -khtml-border-radius: 0 !important;
+    border-radius: 0 !important;
+    border: none;
+    padding: 0 !important;
+}
+
+.css {
+    font-family: "Courier New";
+    color: #000;
+    font-size: 10pt;
+    padding: 10px !important;
+    line-height: 120%;
+}
+
+.css .rem {
+    color: #A0A0A0;
+}
+
+.css .sel {
+    color: #AA1515;
+}
+
+.css .name {
+    color: #FF0000;
+    font-weight: normal;
+}
+
+.css .value {
+    color: #0000FF;
+}
+
+.x-grid-cell-inner {
+    position: relative;
+}
+.category_menu,
+.preset_menu {
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    right: 5px;
+    top: 1px;
+    background-image: url("../img/bullet_wrench.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.x-menu-item .preset_menu {
+    background-image: none;
+}
+
+.category_menu {
+    background-image: url("../img/gear-small.png");
+}
+
+.default_preset_ico {
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    right: 20px;
+    top: 1px;
+    background-image: url("../img/star-small.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.default_icon {
+    background-image: url("../img/status.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+}
+
+.clone_icon {
+    background-image: url("../img/document-copy.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+}
+
+.rename_icon {
+    background-image: url("../img/textfield_rename.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+}
+
+.delete_icon {
+    background-image: url("../img/cross.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+}
+
+.new_category_icon {
+    background-image: url("../img/wand-small.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: center -1px !important;
+}
+
+.gear_icon {
+    background-image: url("../img/gear.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: center -1px !important;
+}
+
+.refresh_icon {
+    background-image: url("../img/arrow_refresh.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+}
+
+.add_icon {
+    background-image: url("../img/plus-small.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+}
+
+.del_icon {
+    background-image: url("../img/cross-small.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+}
+
+.preset_icon {
+    background-image: url("../img/brick.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+}
+
+.act_preset_icon {
+    background-image: url("../img/brick_act.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+}
+
+.categories_icon {
+    background-image: url("../img/categories.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+}
+
+.category_icon {
+    background-image: url("../img/category.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+}
+
+.category-item_icon {
+    background-image: url("../img/category-item.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+}
+
+.bricks_icon {
+    background-image: url("../img/bricks.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+}
+
+.reset_from_icon {
+    background-image: url("../img/node-delete-child.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+}
+
+.show_all {
+    background-image: url("../img/ui-check-all.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+}
+
+.show_selected {
+    background-image: url("../img/ui-check-1.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+}
+
+.hide_selected {
+    background-image: url("../img/ui-check-2.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+}
+
+.table_import {
+    background-image: url("../img/database-import.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+}
+
+.drive_download {
+    background-image: url("../img/drive-download.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+}
+
+.folder_plus {
+    background-image: url("../img/folder--plus.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+}
+
+.folder {
+    background-image: url("../img/folder.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+}

@@ -1,0 +1,5 @@
+name = Style manager
+description = Manage styles.
+core = 7.x
+version = 7.x-0.1
+package = Style manager
