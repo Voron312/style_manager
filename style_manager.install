@@ -1,0 +1,19 @@
+<?php
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function style_manager_uninstall() {
+  $result = db_select('variable', 'v')
+    ->condition('v.name', 'style_manager_preset%', 'LIKE')
+    ->fields('v', array('name'))
+    ->execute()
+    ->fetchAll();
+
+  if ($result) {
+    foreach ($result as $data) {
+      variable_del($data->name);
+    }
+  }
+  variable_del('style_manager_css3pie');
+}
