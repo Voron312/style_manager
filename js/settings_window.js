@@ -22,7 +22,7 @@ var style_manager_settings = function (cat_id, act_tab) {
       Ext.getCmp('category_settings_css_prefix').hide(true);
       Ext.getCmp('category_settings_add_important').hide(true);
     }
-    jQuery.post(Drupal.settings.basePath + 'style_manager/category_load', {cat: cat_id}, function (data) {
+    jQuery.post(Drupal.settings.basePath + 'style_manager/category_load', {cat: cat_id, token: Drupal.settings.style_manager.token}, function (data) {
       loadMask.hide();
       cat_id = data.id;
       Ext.getCmp('category_settings_id').setDisabled(true);
@@ -108,7 +108,8 @@ var style_manager_settings = function (cat_id, act_tab) {
               return;
             }
             var data = {
-              cat_id: Ext.getCmp('category_settings_id').getValue()
+              cat_id: Ext.getCmp('category_settings_id').getValue(),
+              token: Drupal.settings.style_manager.token
             };
             loadMask.show();
             Drupal.css_gen.styleStore.removeAll();
@@ -131,7 +132,8 @@ var style_manager_settings = function (cat_id, act_tab) {
               return;
             }
             var data = {
-              cat_id: Ext.getCmp('category_settings_id').getValue()
+              cat_id: Ext.getCmp('category_settings_id').getValue(),
+              token: Drupal.settings.style_manager.token
             };
             loadMask.show();
             jQuery.post(Drupal.settings.basePath + 'style_manager/category_reset', data, function (data) {
@@ -153,7 +155,8 @@ var style_manager_settings = function (cat_id, act_tab) {
               cat_title: Ext.getCmp('category_settings_title').getValue(),
               css_prefix: Ext.getCmp('category_settings_css_prefix').getValue(),
               add_important: Ext.getCmp('category_settings_add_important').getValue(),
-              old_cat_id: cat_id ? cat_id : ''
+              old_cat_id: cat_id ? cat_id : '',
+              token: Drupal.settings.style_manager.token
             };
             loadMask.show();
             jQuery.post(Drupal.settings.basePath + 'style_manager/category_save', data, function (data) {
@@ -225,7 +228,7 @@ var style_manager_settings = function (cat_id, act_tab) {
           if(form.isValid()){
             var category_id = Ext.getCmp('category_settings_id').getValue();
             form.submit({
-              url: Drupal.settings.basePath + 'style_manager/category_import/' + category_id,
+              url: Drupal.settings.basePath + 'style_manager/category_import/' + category_id + '?token=' + Drupal.settings.style_manager.token,
               waitMsg: 'Importing...',
               success: function(fp, o) {
                 Ext.MessageBox.alert('Done', o.result.message);
@@ -275,6 +278,9 @@ var style_manager_settings = function (cat_id, act_tab) {
         type: 'json',
         writeAllFields: true,
         root: 'data'
+      },
+      extraParams: {
+        token: Drupal.settings.style_manager.token
       }
     },
     listeners: {

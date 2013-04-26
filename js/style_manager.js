@@ -49,7 +49,12 @@ Drupal.css_gen = {
 
   'get_form': function (cat_id) {
     Drupal.css_gen.form_loading(true);
-    jQuery.post(Drupal.settings.basePath + 'style_manager/get_styles_form.json', {cat: cat_id, group: Drupal.css_gen.selectrd_group}, function (data) {
+    var post_data = {
+      cat: cat_id,
+      group: Drupal.css_gen.selectrd_group,
+      token: Drupal.settings.style_manager.token
+    };
+    jQuery.post(Drupal.settings.basePath + 'style_manager/get_styles_form.json', post_data, function (data) {
       var form_obj = eval('(' + data + ')');
       Drupal.css_gen.replase_form(form_obj);
     });
@@ -66,6 +71,7 @@ Drupal.css_gen = {
     var data = {};
     data.cat = Drupal.css_gen.selected_cat;
     data.group = Drupal.css_gen.selectrd_group;
+    data.token = Drupal.settings.style_manager.token;
     if (item.global) {
       if (!checked) {
         return ;
@@ -123,6 +129,7 @@ Drupal.css_gen = {
       post_data.cat = Drupal.css_gen.selected_cat;
       post_data.group = Drupal.css_gen.selectrd_group;
       post_data.visibility_settings = Ext.JSON.encode(visibility_settings_arr);
+      post_data.token = Drupal.settings.style_manager.token;
       jQuery.post(Drupal.settings.basePath + 'style_manager/preset_item_visibility_settings_save_all.json', post_data, function (data) {
       }, 'json');
     }
@@ -239,7 +246,12 @@ Drupal.css_gen = {
       return;
     }
     if (this.id && this.id == 'style_manager_class') {
-      jQuery.post(Drupal.settings.basePath + 'style_manager/save_styles.json', {field_values: Ext.JSON.encode(form), cat: Drupal.css_gen.selected_cat}, function (data) {
+      var post_data = {
+        field_values: Ext.JSON.encode(form),
+        cat: Drupal.css_gen.selected_cat,
+        token: Drupal.settings.style_manager.token
+      };
+      jQuery.post(Drupal.settings.basePath + 'style_manager/save_styles.json', post_data, function (data) {
         Drupal.css_gen.upd_page_styles();
         Drupal.css_gen.show_alerts(data);
       }, 'json');
@@ -305,7 +317,12 @@ Drupal.css_gen = {
   'preset_save_as': function (selected_cat) {
     Ext.MessageBox.prompt('Save preset as', 'Preset name:', function (btn, text) {
       if (btn == 'ok' && text != '') {
-        jQuery.post(Drupal.settings.basePath + 'style_manager/preset_save_as.json', {cat: selected_cat, title: text}, function (data) {
+        var post_data = {
+          cat: selected_cat,
+          title: text,
+          token: Drupal.settings.style_manager.token
+        };
+        jQuery.post(Drupal.settings.basePath + 'style_manager/preset_save_as.json', post_data, function (data) {
           Drupal.css_gen.filter_category_tree_load(data.old_id);
           Drupal.css_gen.show_alerts(data);
         }, 'json');
@@ -319,7 +336,11 @@ Drupal.css_gen = {
   'preset_delete': function (selected_cat) {
     Ext.MessageBox.confirm('Confirm', 'Are you sure you want to delete selectrd preset?', function (btn, text) {
       if (btn == 'yes' && text != '') {
-        jQuery.post(Drupal.settings.basePath + 'style_manager/preset_delete.json', {cat: selected_cat}, function (data) {
+        var post_data = {
+          cat: selected_cat,
+          token: Drupal.settings.style_manager.token
+        };
+        jQuery.post(Drupal.settings.basePath + 'style_manager/preset_delete.json', post_data, function (data) {
           Drupal.css_gen.filter_category_tree_load(data.cat_id);
           Drupal.css_gen.show_alerts(data);
         }, 'json');
@@ -330,7 +351,12 @@ Drupal.css_gen = {
   'preset_rename': function (selected_cat) {
     Ext.MessageBox.prompt('Rename preset', 'New name:', function (btn, text) {
       if (btn == 'ok' && text != '') {
-        jQuery.post(Drupal.settings.basePath + 'style_manager/preset_rename.json', {cat: selected_cat, title: text}, function (data) {
+        var post_data = {
+          cat: selected_cat,
+          title: text,
+          token: Drupal.settings.style_manager.token
+        };
+        jQuery.post(Drupal.settings.basePath + 'style_manager/preset_rename.json', post_data, function (data) {
           Drupal.css_gen.filter_category_tree_load(data.new_id);
           Drupal.css_gen.show_alerts(data);
         }, 'json');
@@ -347,7 +373,11 @@ Drupal.css_gen = {
     if (Drupal.css_gen.selected_cat_arr) {
       cat = Drupal.css_gen.selected_cat_arr[0];
     }
-    jQuery.post(Drupal.settings.basePath + 'style_manager/get_cat_list.json', {selected_cat: cat}, function (data) {
+    var post_data = {
+      selected_cat: cat,
+      token: Drupal.settings.style_manager.token
+    };
+    jQuery.post(Drupal.settings.basePath + 'style_manager/get_cat_list.json', post_data, function (data) {
       var root = Drupal.css_gen.catTree.getRootNode();
       root.removeAll();
       root.appendChild(data);
@@ -356,7 +386,11 @@ Drupal.css_gen = {
   },
 
   'set_default_preset': function (selected_cat) {
-    jQuery.post(Drupal.settings.basePath + 'style_manager/set_default_preset.json', {cat: selected_cat}, function (data) {
+    var post_data = {
+      cat: selected_cat,
+      token: Drupal.settings.style_manager.token
+    };
+    jQuery.post(Drupal.settings.basePath + 'style_manager/set_default_preset.json', post_data, function (data) {
       Drupal.css_gen.filter_category_tree_load(Drupal.css_gen.selected_cat);
     }, 'json');
   },
@@ -374,7 +408,11 @@ Drupal.css_gen = {
     else if (!selected_cat){
       selected_cat = Drupal.css_gen.selected_cat;
     }
-    jQuery.post(Drupal.settings.basePath + 'style_manager/get_css.json', {cat: selected_cat}, function (data) {
+    var post_data = {
+      cat: selected_cat,
+      token: Drupal.settings.style_manager.token
+    };
+    jQuery.post(Drupal.settings.basePath + 'style_manager/get_css.json', post_data, function (data) {
       if (data.reset_all) {
         jQuery('.style_manager_preview_styles').remove();
       }

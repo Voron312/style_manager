@@ -8,18 +8,21 @@ function style_manager_menu() {
   $items['style_manager/get_cat_list.json'] = array(
     'page callback' => 'style_manager_get_cat_list_json',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
   $items['style_manager/get_category_groups.json'] = array(
     'page callback' => 'get_category_groups_json',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
   $items['style_manager/save_styles.json'] = array(
     'page callback' => 'style_manager_save_styles_json',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
@@ -28,6 +31,7 @@ function style_manager_menu() {
   $items['style_manager/get_styles_form.json'] = array(
     'page callback' => 'style_manager_get_styles_form_json',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
@@ -36,48 +40,56 @@ function style_manager_menu() {
   $items['style_manager/preset_save.json'] = array(
     'page callback' => 'style_manager_preset_save_json',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
   $items['style_manager/preset_save_as.json'] = array(
     'page callback' => 'style_manager_preset_save_as_json',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
   $items['style_manager/preset_rename.json'] = array(
     'page callback' => 'style_manager_preset_rename_json',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
   $items['style_manager/preset_delete.json'] = array(
     'page callback' => 'style_manager_preset_delete_json',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
   $items['style_manager/set_default_preset.json'] = array(
     'page callback' => 'style_manager_set_default_preset_json',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
   $items['style_manager/get_css.json'] = array(
     'page callback' => 'style_manager_get_css_json',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
   $items['style_manager/preset_item_visibility_settings_save.json'] = array(
     'page callback' => 'preset_item_visibility_settings_save_json',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
   $items['style_manager/preset_item_visibility_settings_save_all.json'] = array(
     'page callback' => 'preset_item_visibility_settings_save_all_json',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
@@ -86,18 +98,21 @@ function style_manager_menu() {
   $items['style_manager/category_form_item/load'] = array(
     'page callback' => 'style_manager_category_form_item_load',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
   $items['style_manager/category_form_item/save'] = array(
     'page callback' => 'style_manager_category_form_item_save',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
   $items['style_manager/category_form_item/destroy'] = array(
     'page callback' => 'style_manager_category_form_item_destroy',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
@@ -106,24 +121,28 @@ function style_manager_menu() {
   $items['style_manager/category_load'] = array(
     'page callback' => 'style_manager_category_load',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
   $items['style_manager/category_save'] = array(
     'page callback' => 'style_manager_category_save',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
   $items['style_manager/category_reset'] = array(
     'page callback' => 'style_manager_category_reset',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
   $items['style_manager/category_destroy'] = array(
     'page callback' => 'style_manager_category_destroy',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
@@ -138,6 +157,7 @@ function style_manager_menu() {
   $items['style_manager/category_import'] = array(
     'page callback' => 'style_manager_category_import',
     'access arguments' => array('style manager admin'),
+    'access callback' => array('style_manager_check_token'),
     'type' => MENU_CALLBACK,
     'file' => 'includes/style_manager.menu.inc',
   );
@@ -589,7 +609,7 @@ function style_manager_add_js_libraries() {
   }
 
   // JS settings.
-  $widgets = array();
+  $js_settings = array();
   $widget_info = style_manager_get_widget_info();
   $widget_titles = array();
   $widget_global = array();
@@ -598,29 +618,29 @@ function style_manager_add_js_libraries() {
     $widget_global[$key] = empty($data['global']) ? 0 : 1;
   }
   array_multisort($widget_global, SORT_ASC, $widget_titles, SORT_ASC, $widget_info);
+  $js_settings['token'] = style_manager_get_token();
   foreach ($widget_info as $key => $data) {
     if (!empty($data['global'])) {
-      $widgets['global_widgets'][] = array(
+      $js_settings['global_widgets'][] = array(
         'value' => $key,
         'name' => $data['title'],
         'description' => $data['description'],
       );
-
-      $widgets['widgets'][] = array(
+      $js_settings['widgets'][] = array(
         'value' => $key,
         'name' => 'g: '. $data['title'],
         'description' => $data['description'],
       );
     }
     else {
-      $widgets['widgets'][] = array(
+      $js_settings['widgets'][] = array(
         'value' => $key,
         'name' => $data['title'],
         'description' => $data['description'],
       );
     }
   }
-  drupal_add_js(array('style_manager' => $widgets), 'setting');
+  drupal_add_js(array('style_manager' => $js_settings), 'setting');
 
   // Add ExtJs resources.
   drupal_add_js($extjs_path . '/ext-all.js', array('type' => $extjs_files_type));
@@ -720,3 +740,24 @@ function style_manager_categoryes_init() {
     }
   }
 }
+
+/**
+ * Check token for menu callback.
+ */
+function style_manager_check_token() {
+  return ($_REQUEST['token'] === style_manager_get_token());
+}
+
+/**
+ * Check token for menu callback.
+ */
+function style_manager_get_token() {
+  if (empty($_SESSION['style_manager_token'])) {
+    $_SESSION['style_manager_token'] = md5(time());
+
+    // Mark this page as being uncacheable.
+    drupal_page_is_cacheable(FALSE);
+  }
+  return $_SESSION['style_manager_token'];
+}
+

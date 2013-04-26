@@ -14,6 +14,9 @@ Ext.onReady(function () {
   Drupal.css_gen.styleStoreProxy = {
     type: 'ajax',
     url: Drupal.settings.basePath + 'style_manager/get_category_groups.json',
+    extraParams: {
+      token: Drupal.settings.style_manager.token
+    },
     simpleSortMode: true
   };
   Drupal.css_gen.styleStore = Ext.create('Ext.data.Store', {

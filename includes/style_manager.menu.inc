@@ -192,7 +192,10 @@ function style_manager_get_styles_form_json() {
         $data['output_selectors'] = style_manager_get_css_selectors($cat_info['css_prefix'], $data['selector']);
         $cat_arr = explode('--', $_POST['cat']);
         if (style_manager_get_item_visibility_status($cat_arr[0], $cat_arr[1], $group, $data['id'])) {
-          $form[] = call_user_func_array($fn, array(array('data' => $data)));
+          $str_data = serialize($data);
+          $str_data = str_replace(array('<js_start>', '<js_end>'), array('', ''), $str_data);
+          $str_data = filter_xss($str_data);
+          $form[] = call_user_func_array($fn, array(array('data' => unserialize($str_data))));
         }
       }
     }

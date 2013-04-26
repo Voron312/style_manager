@@ -2,7 +2,10 @@ Ext.onReady(function () {
   Drupal.css_gen.catStore = Ext.create('Ext.data.TreeStore', {
     proxy: {
       type: 'ajax',
-      url: Drupal.settings.basePath + 'style_manager/get_cat_list.json'
+      url: Drupal.settings.basePath + 'style_manager/get_cat_list.json',
+      extraParams: {
+        token: Drupal.settings.style_manager.token
+      }
     }
   });
 
