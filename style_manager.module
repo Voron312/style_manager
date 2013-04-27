@@ -193,10 +193,10 @@ function style_manager_permission() {
  * Implements hook_init().
  */
 function style_manager_init() {
+  module_load_include('inc', 'style_manager', 'includes/style_manager.helper');
   if (arg(0) == 'style_manager') {
     return;
   }
-  module_load_include('inc', 'style_manager', 'includes/style_manager.helper');
   if (user_access('style manager admin') && style_manager_path_visibility_check('style_manager_exclude_editor_paths')) {
     style_manager_add_js_libraries();
   }
