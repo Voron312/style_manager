@@ -224,6 +224,37 @@ function style_manager_css3pie() {
 }
 
 /**
+ * Implementation of hook_context_registry().
+ */
+function style_manager_context_registry() {
+  $registry = array();
+  $registry['reactions'] = array(
+    'style_manager_reaction_preset' => array(
+      'title' => t('Style Manager'),
+      'description' => t('Set active preset for Style Manager.'),
+      'plugin' => 'style_manager_reaction_preset',
+    ),
+  );
+  return $registry;
+}
+
+/**
+ * Implementation of hook_context_plugins().
+ */
+function style_manager_context_plugins() {
+  $plugins = array();
+  $plugins['style_manager_reaction_preset'] = array(
+    'handler' => array(
+      'path' => drupal_get_path('module', 'style_manager') . '/includes',
+      'file' => 'style_manager.context_reaction.inc',
+      'class' => 'style_manager_reaction_preset',
+      'parent' => 'context_reaction',
+    ),
+  );
+  return $plugins;
+}
+
+/**
  * Implementation of hook_manager_presets_folder().
  */
 function style_manager_presets_folder() {
@@ -267,7 +298,6 @@ function style_manager_style_manager_widgets() {
         ),
       ),
     ),
-
     'padding' => array(
       'form' => 'style_manager_padding',
       'title' => t('Padding'),
@@ -280,7 +310,6 @@ function style_manager_style_manager_widgets() {
         'left' => array('str_value' => '-'),
       ),
     ),
-
     'margin' => array(
       'form' => 'style_manager_margin',
       'title' => t('Margin'),
@@ -293,7 +322,6 @@ function style_manager_style_manager_widgets() {
         'left' => array('str_value' => '-'),
       ),
     ),
-
     'box_shadow' => array(
       'form' => 'style_manager_box_shadow',
       'title' => t('Box shadow'),
@@ -328,7 +356,6 @@ function style_manager_style_manager_widgets() {
         ),
       ),
     ),
-
     'position' => array(
       'form' => 'style_manager_position',
       'title' => t('Position'),
@@ -345,7 +372,6 @@ function style_manager_style_manager_widgets() {
         ),
       ),
     ),
-
     'box' => array(
       'form' => 'style_manager_box',
       'title' => t('Box size'),
@@ -360,7 +386,6 @@ function style_manager_style_manager_widgets() {
         'clear' => '-',
       ),
     ),
-
     'border' => array(
       'form' => 'style_manager_border',
       'title' => t('Border'),
@@ -452,7 +477,6 @@ function style_manager_style_manager_widgets() {
         'different_color' => FALSE,
       ),
     ),
-
     'font' => array(
       'form' => 'style_manager_font',
       'title' => t('Font'),
@@ -498,7 +522,6 @@ function style_manager_style_manager_widgets() {
         ),
       ),
     ),
-
     'list_style' => array(
       'form' => 'style_manager_list_style',
       'title' => t('List style'),
@@ -510,7 +533,6 @@ function style_manager_style_manager_widgets() {
         'image' => '-'
       ),
     ),
-
     'css_code' => array(
       'form' => 'style_manager_css_code',
       'title' => t('CSS code'),
@@ -520,7 +542,6 @@ function style_manager_style_manager_widgets() {
         'css_code' => ''
       ),
     ),
-
     'reset' => array(
       'form' => 'style_manager_reset',
       'title' => t('Reset'),
@@ -530,7 +551,6 @@ function style_manager_style_manager_widgets() {
         'type' => 'all'
       ),
     ),
-
     'style_manager_global_color' => array(
       'form' => 'style_manager_global_color',
       'title' => t('Color'),
@@ -543,7 +563,6 @@ function style_manager_style_manager_widgets() {
         'color_correct' => FALSE,
       ),
     ),
-
     'style_manager_global_font' => array(
       'form' => 'style_manager_global_font',
       'title' => t('Font'),
@@ -554,7 +573,6 @@ function style_manager_style_manager_widgets() {
         'font' => 'Verdana, Geneva, sans-serif',
       ),
     ),
-
     'style_manager_global_numeric' => array(
       'form' => 'style_manager_global_numeric',
       'title' => t('Numeric'),
@@ -637,7 +655,7 @@ function style_manager_add_js_libraries() {
       );
       $js_settings['widgets'][] = array(
         'value' => $key,
-        'name' => 'g: '. $data['title'],
+        'name' => 'g: ' . $data['title'],
         'description' => $data['description'],
       );
     }
@@ -677,7 +695,7 @@ function style_manager_add_styles() {
   $css_key = '';
   if (!empty($cat_info)) {
     foreach ($cat_info as $data) {
-      $default_preset = style_manager_get_default_preset($data['info']['id']);
+      $default_preset = style_manager_get_page_preset($data['info']['id']);
       if ($data['info']['id'] != 'global_config' && $default_preset != 'disable') {
         $presets[$data['info']['id']] = $default_preset;
       }
@@ -688,7 +706,12 @@ function style_manager_add_styles() {
     $css_path = file_build_uri('style_manager_cache/css/' . md5($css_key) . '.css');
     $success = file_exists($css_path) || style_manager_render_styles($presets, $css_path);
     if ($success) {
-      drupal_add_css($css_path, array('preprocess' => FALSE, 'weight' => 5000, 'group' => CSS_THEME, 'every_page' => FALSE));
+      drupal_add_css($css_path, array(
+        'preprocess' => FALSE,
+        'weight' => 5000,
+        'group' => CSS_THEME,
+        'every_page' => FALSE
+      ));
     }
   }
 }

@@ -318,8 +318,12 @@ function style_manager_get_presets($cat_id, $mark_default = TRUE) {
         'iconCls' => 'preset_icon',
       );
       if ($default_preset == $key && $mark_default) {
+        $tree_item['text'] = '<span  data-qtip="' . t('Default preset.') . '">' . $tree_item['text'] . '</span>';
         $tree_item['iconCls'] = 'act_preset_icon';
         $tree_item['default'] = TRUE;
+      }
+      elseif (style_manager_preset_is_override($cat_id, $key)) {
+        $tree_item['text'] = '<span data-qtip="' . style_manager_preset_is_override($cat_id, $key) . '">* ' . $tree_item['text'] . '</span>';
       }
       $tree_item['text'] .= ' <a href="#" class="preset_menu" data-id="' . $tree_item['id'] . '"></a>';
       $out_data[] = $tree_item;

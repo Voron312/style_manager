@@ -258,7 +258,12 @@ Drupal.css_gen = {
     }
     else {
       Drupal.css_gen.form_loading(true);
-      jQuery.post(Drupal.settings.basePath + 'style_manager/save_styles.json', {field_values: Ext.JSON.encode(form), cat: Drupal.css_gen.selected_cat}, function (data) {
+      var post_data = {
+        field_values: Ext.JSON.encode(form),
+        cat: Drupal.css_gen.selected_cat,
+        token: Drupal.settings.style_manager.token
+      };
+      jQuery.post(Drupal.settings.basePath + 'style_manager/save_styles.json', post_data, function (data) {
         Drupal.css_gen.upd_page_styles();
         Drupal.css_gen.show_alerts(data);
         Drupal.css_gen.form_loading(false);

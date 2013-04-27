@@ -21,6 +21,9 @@ RECOMMENDED MODULES
 * IMCE (http://drupal.org/project/imce)
   allow to upload background images
 
+* Context (http://drupal.org/project/context)
+  allow to set active preset based on context rules
+
 
 INSTALLATION
 -----------

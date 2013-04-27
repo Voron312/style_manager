@@ -107,6 +107,48 @@ function style_manager_get_default_preset($cat_id) {
 
 
 /**
+ * Get active preset for current page.
+ */
+function style_manager_get_page_preset($cat_id) {
+  $default_preset = style_manager_get_cat_info($cat_id, 'default_preset');
+  if (!$default_preset) {
+    $default_preset = 'default';
+  }
+
+  if (module_exists('context')) {
+    $contexts = context_active_contexts();
+    foreach ($contexts as $context) {
+      if (!empty($context->reactions['style_manager_reaction_preset'][$cat_id])) {
+        $default_preset = $context->reactions['style_manager_reaction_preset'][$cat_id];
+      }
+    }
+  }
+  return $default_preset;
+}
+
+
+/**
+ * Get active preset for current page.
+ */
+function style_manager_preset_is_override($cat_id, $preset) {
+  $out = FALSE;
+  if (module_exists('context')) {
+    $context_list = context_load(NULL, TRUE);
+    $act_contexts = array();
+    foreach ($context_list as $context) {
+      if (!empty($context->reactions['style_manager_reaction_preset'][$cat_id])
+          && $context->reactions['style_manager_reaction_preset'][$cat_id] == $preset) {
+        $act_contexts[] = $context->name;
+      }
+    }
+    if ($act_contexts) {
+      $out = t('Set as default in context: @context_name', array('@context_name' => implode(', ', $act_contexts)));
+    }
+  }
+  return $out;
+}
+
+/**
  * Get all presets.
  */
 function style_manager_get_all_presets($cat) {
