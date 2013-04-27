@@ -162,6 +162,16 @@ function style_manager_menu() {
     'file' => 'includes/style_manager.menu.inc',
   );
 
+  // Settings form.
+  $items['admin/config/user-interface/style_manager'] = array(
+    'title' => 'Style Manager',
+    'description' => 'Style editor.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('style_manager_settings'),
+    'access arguments' => array('style manager admin'),
+    'file' => 'includes/style_manager.admin.inc',
+  );
+
   return $items;
 }
 
@@ -183,18 +193,17 @@ function style_manager_permission() {
  * Implements hook_init().
  */
 function style_manager_init() {
-  if (in_array(arg(0), array('imce', 'admin'))) {
-    return;
-  }
-  module_load_include('inc', 'style_manager', 'includes/style_manager.helper');
   if (arg(0) == 'style_manager') {
     return;
   }
-  if (user_access('style manager admin')) {
+  module_load_include('inc', 'style_manager', 'includes/style_manager.helper');
+  if (user_access('style manager admin') && style_manager_path_visibility_check('style_manager_exclude_editor_paths')) {
     style_manager_add_js_libraries();
   }
   style_manager_categoryes_init();
-  style_manager_add_styles();
+  if (style_manager_path_visibility_check('style_manager_exclude_css_paths')) {
+    style_manager_add_styles();
+  }
 }
 
 /**

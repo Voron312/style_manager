@@ -3,3 +3,4 @@ description = Manage styles.
 core = 7.x
 version = 7.x-0.1
 package = Style manager
+configure = admin/config/user-interface/style_manager

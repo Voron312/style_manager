@@ -1,6 +1,13 @@
 <?php
 
 /**
+ * Implementation of hook_install().
+ */
+function style_manager_install() {
+  variable_set('style_manager_exclude_editor_paths', "admin*\nimce*");
+}
+
+/**
  * Implementation of hook_uninstall().
  */
 function style_manager_uninstall() {
@@ -16,4 +23,6 @@ function style_manager_uninstall() {
     }
   }
   variable_del('style_manager_css3pie');
+  variable_del('style_manager_exclude_editor_paths');
+  variable_del('style_manager_exclude_css_paths');
 }

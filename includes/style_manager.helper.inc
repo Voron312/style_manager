@@ -405,3 +405,15 @@ function style_manager_clean_css_cache() {
     }
   }
 }
+
+/**
+ * Check path visibility, for allow add editor or css files.
+ */
+function style_manager_path_visibility_check($variable) {
+  $path = drupal_get_path_alias($_GET['q']);
+  $page_match = drupal_match_path($path, variable_get($variable, ''));
+  if ($path != $_GET['q']) {
+    $page_match = $page_match || drupal_match_path($_GET['q'], variable_get($variable, ''));
+  }
+  return !$page_match;
+}
