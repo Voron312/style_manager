@@ -60,7 +60,7 @@
           region: 'east',
           border: false,
           //layout: 'fit',
-          autoScroll: true,
+          autoScroll: false,
           id: 'style_manager_el_form',
           items: [
             {
