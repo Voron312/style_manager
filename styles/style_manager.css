@@ -79,7 +79,7 @@
     position: fixed;
     top: 45%;
     width: 10px;
-    z-index: 30000;
+    z-index: 500;
     -webkit-border-top-left-radius: 5px;
     -webkit-border-bottom-left-radius: 5px;
     -moz-border-radius-topright: 5px;
@@ -309,6 +309,18 @@
 
 .folder {
     background-image: url("../img/folder.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+}
+
+.status {
+    background-image: url("../img/status.png") !important;
+    background-repeat: no-repeat !important;
+    background-position: left center !important;
+}
+
+.hourglass {
+    background-image: url("../img/hourglass.png") !important;
     background-repeat: no-repeat !important;
     background-position: left center !important;
 }

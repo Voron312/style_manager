@@ -99,6 +99,7 @@
     var css_gen_win_width = 1065;
     Drupal.css_gen.win = Ext.create('Ext.window.Window', {
       title: 'Style Manager',
+      iconCls: 'status',
       collapsible: true,
       stateful: true,
       resizable: false,

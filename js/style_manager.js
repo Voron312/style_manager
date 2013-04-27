@@ -412,6 +412,7 @@ Drupal.css_gen = {
       cat: selected_cat,
       token: Drupal.settings.style_manager.token
     };
+    Drupal.css_gen.win.setIconCls('hourglass');
     jQuery.post(Drupal.settings.basePath + 'style_manager/get_css.json', post_data, function (data) {
       if (data.reset_all) {
         jQuery('.style_manager_preview_styles').remove();
@@ -421,6 +422,7 @@ Drupal.css_gen = {
         jQuery('body').append('<style class="style_manager_preview_styles" id="style_manager_cat_' + cat_data.cat + '">' + cat_data.css + '</style>');
       });
       Drupal.css_gen.upd_page_output_css_textarea();
+      Drupal.css_gen.win.setIconCls('status');
     }, 'json');
   },
 
