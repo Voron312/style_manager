@@ -128,7 +128,7 @@ function style_manager_get_page_preset($cat_id) {
 
 
 /**
- * Get active preset for current page.
+ * Check is default preset overridden in context module.
  */
 function style_manager_preset_is_override($cat_id, $preset) {
   $out = FALSE;
@@ -458,4 +458,13 @@ function style_manager_path_visibility_check($variable) {
     $page_match = $page_match || drupal_match_path($_GET['q'], variable_get($variable, ''));
   }
   return !$page_match;
+}
+
+/**
+ * Callback for preg_replace_callback
+ * @see style_manager_get_styles_form_json
+ */
+function style_manager_replace_callback($matches) {
+  $data = preg_replace('/\s+/', ' ', stripslashes($matches[2]));
+  return ' ' . $data . ' ';
 }

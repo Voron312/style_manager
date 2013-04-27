@@ -204,16 +204,10 @@ function style_manager_get_styles_form_json() {
   $visibility_type = !empty($preset_data['info']['visibility_settings'][$group]['visibility_type']) ? $preset_data['info']['visibility_settings'][$group]['visibility_type'] : 'show_all';
   $json = json_encode(array('form' => $form, 'presets' => $presets, 'cat_id' => $cat, 'visibility_settings' => $all_elements, 'visibility_type' => $visibility_type));
 
-  preg_match_all('/\"\s*<js_start>(.*)<js_end>\s*\"/isU', $json, $matches, PREG_SET_ORDER);
-  if ($matches) {
-    foreach ($matches as $match_data) {
-      $js_code = preg_replace('/\s+/', ' ', $match_data[1]);
-      $json = str_replace($match_data[0], stripslashes($js_code), $json);
-    }
-  }
-
+  $json = preg_replace_callback('/\"(\s*<js_start>)(.*)(<js_end>\s*)\"/isU', 'style_manager_replace_callback', $json);
   print $json;
 }
+
 
 /**
  * Save style settings.
